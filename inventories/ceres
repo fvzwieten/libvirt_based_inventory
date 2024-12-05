@@ -1,2 +1,2 @@
 plugin: community.libvirt.libvirt
-uri: 'qemu+ssh://fred@192.168.100.1/system'
+uri: 'qemu://192.168.100.1/system'
