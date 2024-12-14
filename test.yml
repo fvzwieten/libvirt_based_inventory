@@ -1,6 +1,7 @@
 ---
 - name: test libvirt modules
-  hosts: all
+  hosts: localhost
+  connection: local
   tasks:
   - name: list VM's
     community.libvirt.virt:
