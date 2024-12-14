@@ -7,6 +7,7 @@
       uri: "qemu://192.168.100.1/system"
       command: list_vms
     register: all_vms
+    
   - name: show result
     ansible.builtin.dbg:
-    - var: all_vms
+      var: all_vms
