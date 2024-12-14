@@ -1,0 +1,12 @@
+---
+- name: test libvirt modules
+  hosts: all
+  tasks:
+  - name: list VM's
+    community.libvirt.virt:
+      uri: "qemu://ceres/system"
+      command: list_vms
+    register: all_vms
+  - name: show result
+    ansible.builtin.dbg:
+    - var: all_vms
