@@ -9,5 +9,5 @@
     register: all_vms
     
   - name: show result
-    ansible.builtin.dbg:
+    ansible.builtin.debug:
       var: all_vms
