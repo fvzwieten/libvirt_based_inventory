@@ -6,5 +6,6 @@
   tasks:
   - name: Define libvirt vm from xml template
     community.libvirt.virt:
+      uri: "qemu://192.168.100.1/system"
       command: define
       xml: "{{ lookup('template', 'files/vm_template.xml.j2') }}"
