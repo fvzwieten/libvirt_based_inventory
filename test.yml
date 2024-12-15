@@ -16,8 +16,8 @@
 
   - name: show username from machine_credential
     ansible.builtin.debug:
-      var: ansible_username
+      msg: "-{{ ansible_user }}-"
 
   - name: show password from machine credential
     ansible.builtin.debug:
-      var: ansible_password
+      msg: "-{{ ansible_password }}-"
