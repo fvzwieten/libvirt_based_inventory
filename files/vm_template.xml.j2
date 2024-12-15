@@ -9,9 +9,9 @@
       <cockpit_machines:install_source_type>cloud</cockpit_machines:install_source_type>
       <cockpit_machines:install_source>/var/lib/libvirt/images/rhel-{{ version }}-x86_64-kvm.qcow2</cockpit_machines:install_source>
       <cockpit_machines:os_variant>rhel{{ version }}</cockpit_machines:os_variant>
-      <cockpit_machines:root_password>{{ root_hash }}</cockpit_machines:root_password>
+      <cockpit_machines:root_password>{{ ansible_password | password_hash }}</cockpit_machines:root_password>
       <cockpit_machines:user_login>i{{ user_name }}</cockpit_machines:user_login>
-      <cockpit_machines:user_password>{{ user_hash }}</cockpit_machines:user_password>
+      <cockpit_machines:user_password>{{ ansible_password | password_hash }}</cockpit_machines:user_password>
     </cockpit_machines:data>
   </metadata>
   <memory unit='GiB'>{{ memory_amount }}</memory>
