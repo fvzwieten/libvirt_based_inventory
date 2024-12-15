@@ -10,7 +10,7 @@
       <cockpit_machines:install_source>/var/lib/libvirt/images/rhel-{{ version }}-x86_64-kvm.qcow2</cockpit_machines:install_source>
       <cockpit_machines:os_variant>rhel{{ version }}</cockpit_machines:os_variant>
       <cockpit_machines:root_password>{{ ansible_password | password_hash }}</cockpit_machines:root_password>
-      <cockpit_machines:user_login>i{{ user_name }}</cockpit_machines:user_login>
+      <cockpit_machines:user_login>i{{ ansible_user }}</cockpit_machines:user_login>
       <cockpit_machines:user_password>{{ ansible_password | password_hash }}</cockpit_machines:user_password>
     </cockpit_machines:data>
   </metadata>
