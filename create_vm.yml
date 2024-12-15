@@ -5,10 +5,10 @@
   tasks:
 
   - name: generate hash for user_password
-    user_hash = "{{ user_password | password_hash }}"
+    user_hash = "{{ ansible_password | password_hash }}"
 
   - name: generate hash for root_password
-    root_hash = "{{ root_password | password_hash }}"
+    root_hash = "{{ ansible_password | password_hash }}"
 
   - name: Define libvirt vm from xml template
     community.libvirt.virt:
