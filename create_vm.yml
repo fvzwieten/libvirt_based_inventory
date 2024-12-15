@@ -2,14 +2,8 @@
 - name: Create a libvirt VM
   hosts: localhost
   connection: local
+  gather_facts: False
   tasks:
-
-  - name: generate hash for user_password
-    user_hash = "{{ ansible_password | password_hash }}"
-
-  - name: generate hash for root_password
-    root_hash = "{{ ansible_password | password_hash }}"
-
   - name: Define libvirt vm from xml template
     community.libvirt.virt:
       command: define
