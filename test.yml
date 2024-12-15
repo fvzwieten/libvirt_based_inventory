@@ -2,6 +2,7 @@
 - name: test libvirt modules
   hosts: localhost
   connection: local
+  gather_facts: False
   tasks:
   - name: list VM's
     community.libvirt.virt:
@@ -12,3 +13,11 @@
   - name: show result
     ansible.builtin.debug:
       var: all_vms
+
+  - name: show username from machine_credential
+    ansible.builtin.debug:
+      var: ansible_username
+
+  - name: show password from machine credential
+    ansible.builtin.debug:
+      var: ansible_password
