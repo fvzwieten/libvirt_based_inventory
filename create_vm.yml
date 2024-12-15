@@ -1,0 +1,11 @@
+---
+- name: Create a libvirt VM
+  hosts: localhost
+  connection: local
+  tasks:
+
+  - name: Define a libvirt VM
+  - name: Define libvirt vm from xml template
+  community.libvirt.virt:
+    command: define
+    xml: "{{ lookup('template', 'files/vm_template.xml.j2') }}"
