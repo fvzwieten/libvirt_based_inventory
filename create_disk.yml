@@ -1,8 +1,19 @@
 ---
 - name: Create Disk
   hosts: all
-  gather_facts: False
-  become: True
+  gather_facts: false
+  become: true
   tasks:
+
+  - name: Create xml definition from template
+    ansible.builtin.template:
+      src: "files/vol_template.xml.j2"
+      dest: "/tmp/{{ vm_name }}_vol_template.xml"
+
   - name: Create systemdisk from template
-    ansible.builtin.command: "virsh vol-create default {{ lookup('template', 'files/vol_template.xml.j2') }}"
+    ansible.builtin.command: "virsh vol-create default '/tmp/{{ vm_name }}_vol_template.xml"
+
+  - name: Remove temporary file
+    ansible.builtin.file:
+      name: "/tmp/{{ vm_name }}_vol_template.xml"
+      state: absent
