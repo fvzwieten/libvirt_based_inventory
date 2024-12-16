@@ -1,9 +1,16 @@
 ---
+- name: Create snapshot from image
+  hosts: ceres
+  gather_facts: False
+  become: True
+  tasks:
+  - name: Use qemu-img
+    ansible.builtin.command: virsh 
+      
 - name: Create a libvirt VM
   hosts: localhost
   connection: local
   gather_facts: False
-  tasks:
   - name: Define libvirt vm from xml template
     community.libvirt.virt:
       uri: "qemu://192.168.100.1/system"
