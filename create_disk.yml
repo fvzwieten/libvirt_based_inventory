@@ -11,7 +11,7 @@
       dest: "/tmp/{{ vm_name }}_vol_template.xml"
 
   - name: Create systemdisk from template
-    ansible.builtin.command: "virsh vol-create default '/tmp/{{ vm_name }}_vol_template.xml"
+    ansible.builtin.command: "virsh vol-create default /tmp/{{ vm_name }}_vol_template.xml"
 
   - name: Remove temporary file
     ansible.builtin.file:
