@@ -4,8 +4,8 @@
   gather_facts: False
   become: True
   tasks:
-  - name: Use qemu-img
-    ansible.builtin.command: virsh 
+  - name: Use virsh using the command module to make a thinly providioned system disk
+    ansible.builtin.command: "virsh vol-create default {{ lookup('template', 'files/vol_template.xml.j2') }}"
       
 - name: Create a libvirt VM
   hosts: localhost
@@ -15,4 +15,4 @@
     community.libvirt.virt:
       uri: "qemu://192.168.100.1/system"
       command: define
-      xml: "{{ lookup('template', 'files/vm_template.xml.j2') }}"
+      xml: "{{ lookup('template', 'files/dom_template.xml.j2') }}"

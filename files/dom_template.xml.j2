@@ -42,14 +42,10 @@
     <emulator>/usr/bin/qemu-system-x86_64</emulator>
     <disk type='file' device='disk'>
       <driver name='qemu' type='qcow2' discard='unmap'/>
+      <source file='/var/lib/libvirt/images/{{ vm_name }}.qcow2'/>
       <backingStore type='file' index='2'>
         <format type='qcow2'/>
-        <source file='/var/lib/libvirt/images/{{ vm_name }}.lab1.lan.qcow2'/>
-        <backingStore type='file' index='3'>
-          <format type='qcow2'/>
           <source file='/var/lib/libvirt/images/rhel-{{ version }}-x86_64-kvm.qcow2'/>
-          <backingStore/>
-        </backingStore>
       </backingStore>
       <target dev='vda' bus='virtio'/>
       <alias name='virtio-disk0'/>
