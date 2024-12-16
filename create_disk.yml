@@ -1,6 +1,6 @@
 ---
 - name: Create Disk
-  hosts: ceres
+  hosts: all
   gather_facts: False
   become: True
   tasks:
