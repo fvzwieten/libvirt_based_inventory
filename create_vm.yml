@@ -1,16 +1,8 @@
----
-- name: Create snapshot from image
-  hosts: ceres
-  gather_facts: False
-  become: True
-  tasks:
-  - name: Use virsh using the command module to make a thinly providioned system disk
-    ansible.builtin.command: "virsh vol-create default {{ lookup('template', 'files/vol_template.xml.j2') }}"
-      
 - name: Create a libvirt VM
   hosts: localhost
   connection: local
   gather_facts: False
+  tasks:
   - name: Define libvirt vm from xml template
     community.libvirt.virt:
       uri: "qemu://192.168.100.1/system"

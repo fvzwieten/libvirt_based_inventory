@@ -1,0 +1,8 @@
+---
+- name: Create Disk
+  hosts: ceres
+  gather_facts: False
+  become: True
+  tasks:
+  - name: Create systemdisk from template
+    ansible.builtin.command: "virsh vol-create default {{ lookup('template', 'files/vol_template.xml.j2') }}"
