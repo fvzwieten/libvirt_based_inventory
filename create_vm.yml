@@ -8,3 +8,19 @@
       uri: "qemu://192.168.100.1/system"
       command: define
       xml: "{{ lookup('template', 'files/dom_template.xml.j2') }}"
+  - name: Install VM
+    ansible.builtin.command:
+      argv:
+        - /usr/bin/virt-install 
+        - --name {{ vm_name }}
+        - --memory {{ vm_memory_gb }}
+        - --vcpus {{ vm_vcpu }}
+        - --disk pool=default,size={{ vm_disk_size }},format=qcow2,backing_store=/var/lib/libvirt/images/rhel-{{ rhel_version }}-x86_64-kvm.qcow2,backing_format=qcow2
+        - --os-variant rhl9
+        - --import
+        - --network network={{ vm_subnet }},model=virtio
+        - --graphics vnc
+        - --serial pty
+        - --console pty
+        - --machine pc-q35-9.1
+        - --cloud-init user-data=user-data.yml,network-config=network-config.yml
