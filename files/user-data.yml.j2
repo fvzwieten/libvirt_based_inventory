@@ -1,0 +1,10 @@
+#cloud-config
+users:
+  - default
+  - name: aap
+    ssh_authorized_keys:
+      - "{{ aap_pub_key }}"
+    groups: wheel
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    shell: /bin/bash
+fqdn: "{{ vm_fqdn }}"
