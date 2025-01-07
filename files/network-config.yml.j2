@@ -1,0 +1,13 @@
+network:
+  version: 1
+  config:
+    - type: physical
+      name: eth0
+      subnets:
+        - type: static
+          address: "{{ vm_ip_address }}/24"
+          gateway: "{{ vm_gateway }}"
+          dns_nameservers:
+            - "{{ vm_nameserver }}"
+          dns_search:
+            - "{{ vm_subnet }}"
