@@ -3,17 +3,27 @@
   gather_facts: False
   become: True
   tasks:
-  - name: Install VM
+  
+  - name: Prepare user-data for cloud-init process
+    ansible.builtin.template:
+      src: files/user-data.yml.j2
+      dest: /tmp/user-data.yml
+      
+  - name: Prepare network-config for cloud-init process
+      src: files/network-config.yml.j2
+      dest: /tmp/network-config.yml
+      
+  - name: Install VM using virt-install on the hypervisor with cloud-init
     ansible.builtin.command:
       argv:
         - /usr/bin/virt-install 
-        - --name {{ vm_name }}
-        - --memory {{ vm_amount_memory_gb }}
-        - --vcpus {{ vm_amount_vcpu }}
-        - --disk pool=default,size={{ vm_amount_disk_gb }},format=qcow2,backing_store=/var/lib/libvirt/images/rhel-{{ rhel_version }}-x86_64-kvm.qcow2,backing_format=qcow2
-        - --os-variant {{ vm_variant }}
+        - --name "{{ vm_name }}"
+        - --memory "{{ vm_amount_memory_gb }}"
+        - --vcpus "{{ vm_amount_vcpu }}"
+        - --disk pool=default,size="{{ vm_amount_disk_gb }},format=qcow2,backing_store=/var/lib/libvirt/images/rhel-{{ rhel_version }}-x86_64-kvm.qcow2,backing_format=qcow2"
+        - --os-variant "{{ vm_variant }}"
         - --import
-        - --network network={{ vm_subnet }},model=virtio
+        - --network network="{{ vm_subnet }}",model=virtio
         - --graphics vnc
         - --serial pty
         - --console pty
