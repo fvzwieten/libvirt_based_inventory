@@ -21,7 +21,7 @@
       /usr/bin/virt-install
         --noautoconsole
         --name "{{ vm_name }}"
-        --memory "{{ vm_amount_memory_gb }}"
+        --memory "{{ vm_amount_memory_mib }}"
         --vcpus "{{ vm_amount_vcpu }}"
         --disk pool=default,size="{{ vm_amount_disk_gb }}",format=qcow2,backing_store=/var/lib/libvirt/images/rhel-"{{ rhel_version }}"-x86_64-kvm.qcow2,backing_format=qcow2
         --os-variant "{{ vm_variant }}"
