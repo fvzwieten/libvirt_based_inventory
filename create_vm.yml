@@ -10,6 +10,7 @@
       dest: /tmp/user-data.yml
       
   - name: Prepare network-config for cloud-init process
+    ansible.builtin.template:
       src: files/network-config.yml.j2
       dest: /tmp/network-config.yml
       
