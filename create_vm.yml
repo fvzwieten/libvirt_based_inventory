@@ -31,4 +31,4 @@
         --serial pty
         --console pty
         --machine pc-q35-9.1
-        --cloud-init user-data=/tmp/user-data.yml,network-config=/tmp/network-config.yml"
+        --cloud-init user-data=/tmp/user-data.yml,network-config=/tmp/network-config.yml
