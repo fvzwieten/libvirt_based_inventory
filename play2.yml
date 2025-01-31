@@ -1,6 +1,6 @@
 ---
 - name: receive value and print it
-  hosts: all
+  hosts: localhost
 
   tasks:
   - name: print received value
