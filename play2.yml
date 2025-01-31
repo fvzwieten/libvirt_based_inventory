@@ -1,0 +1,9 @@
+---
+- name: receive value and print it
+  hosts: all
+
+  tasks:
+  - name: print received value
+    ansible.builtin.debug:
+      msg: "Received value: {{ testdata }}"
+      
