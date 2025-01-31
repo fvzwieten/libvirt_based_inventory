@@ -1,0 +1,11 @@
+---
+- name: play 1 which sets a data for next plays
+  hosts: all
+  vars:
+  - testdata: 123
+
+  tasks:
+  - name: set stats for test
+    ansible.builtin.set_stats:
+      data:
+        testdata: "{{ testdata }}"
