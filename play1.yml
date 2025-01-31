@@ -1,6 +1,6 @@
 ---
 - name: play 1 which sets a data for next plays
-  hosts: all
+  hosts: localhost
   vars:
   - testdata: 123
 
